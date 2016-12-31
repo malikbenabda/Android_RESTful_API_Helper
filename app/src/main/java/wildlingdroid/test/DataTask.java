@@ -1,21 +1,16 @@
 package wildlingdroid.test;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 
 /**
  * Created by malik on 31-Dec-16.
@@ -23,20 +18,16 @@ import java.net.URLEncoder;
 
 
 public class DataTask extends AsyncTask<String, Void, String> {
-    private String MY_SERVERNAME = "localhost:8000";
+    public static final String USERS_TABLE = "users";
+    public static final String PLACES_TABLE = "places";
+    public static final String USERS_FIND_ALL = "find/all";
+    public static final String PLACES_FIND_ALL = "find/all";
     Context ctx;
     String jsonString;
     String response = "";
+    // add same to all otgher routes
     String line = "";
-
-    public static final String USERS_TABLE = "users";
-    public static final String PLACES_TABLE = "places";
-// add same to all otgher routes
-
-
-
-    public static final String USERS_FIND_ALL = "find/all";
-    public static final String PLACES_FIND_ALL = "find/all";
+    private String MY_SERVERNAME = "localhost:8000";
 // add same to all otgher methods
 
     /**
@@ -76,6 +67,7 @@ public class DataTask extends AsyncTask<String, Void, String> {
                 URL url = new URL(myURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 Log.e("http :  ","connection established");
+                // GET or POST depends on API
                     httpURLConnection.setRequestMethod("GET");
 
                     httpURLConnection.setDoInput(true);
