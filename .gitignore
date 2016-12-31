@@ -23,7 +23,8 @@ $RECYCLE.BIN/
 
 # OSX
 # =========================
-
+/build
+/captures
 .DS_Store
 .AppleDouble
 .LSOverride
